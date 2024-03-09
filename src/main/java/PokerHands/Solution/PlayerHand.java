@@ -1,4 +1,4 @@
-package PokerHands.Solution;
+ tapackage PokerHands.Solution;
 
 import java.util.ArrayList;
 import java.util.Collections;
