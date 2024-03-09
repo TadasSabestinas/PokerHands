@@ -5,6 +5,6 @@ public class App
     public static void main( String[] args )
     {
     	PlayPokerHand game = new PlayPokerHand();
-        game.playGame(); // Start the game
+        game.playGame(); 
     }
 }
