@@ -1,10 +1,13 @@
 package PokerHands.Solution;
 
-public class Cards {
+import PokerHands.Solution.Enums.Suits;
+import PokerHands.Solution.Enums.Values;
+
+public class Card {
     private final Suits suit;
     private final Values value;
 
-    public Cards(Suits suit, Values value) {
+    public Card(Suits suit, Values value) {
         this.suit = suit;
         this.value = value;
     }
