@@ -65,6 +65,15 @@ public class PlayerHand implements Comparable<PlayerHand> {
 
 	public boolean isStraight() {
 		sortCardsByValue(); // Make sure cards are sorted
+
+		boolean isAceLowStraight = cards.get(0).getValue() == Values.TWO && cards.get(1).getValue() == Values.THREE
+				&& cards.get(2).getValue() == Values.FOUR && cards.get(3).getValue() == Values.FIVE
+				&& cards.get(4).getValue() == Values.ACE;
+
+		if (isAceLowStraight) {
+			return true;
+		}
+
 		for (int i = 0; i < 4; i++) {
 			if (cards.get(i).getValue().ordinal() + 1 != cards.get(i + 1).getValue().ordinal()) {
 				return false;
@@ -112,7 +121,8 @@ public class PlayerHand implements Comparable<PlayerHand> {
 		return -1;
 	}
 
-	private int compareKickers(PlayerHand other) { // Compare kickers of the hand if the player 1 and player 2 hands are equal
+	private int compareKickers(PlayerHand other) { // Compare kickers of the hand if the player 1 and player 2 hands are
+													// equal
 		List<Card> thisKickers = new ArrayList<>();
 
 		for (Card c : this.cards) {
@@ -172,7 +182,8 @@ public class PlayerHand implements Comparable<PlayerHand> {
 					return compareKickers(other); // For pairs of the same value, compare kickers
 				}
 			} else {
-				this.sortCardsByValue(); // Compare each card's value starting from highest if hands are not pairs or have no special rank
+				this.sortCardsByValue(); // Compare each card's value starting from highest if hands are not pairs or
+											// have no special rank
 				other.sortCardsByValue();
 				for (int i = 4; i >= 0; i--) {
 					int thisValue = this.cards.get(i).getValue().ordinal();
@@ -192,25 +203,25 @@ public class PlayerHand implements Comparable<PlayerHand> {
 
 		int handRank = -1;
 		if (isFlush() && isStraight() && cards.get(4).getValue() == Values.ACE) {
-			handRank = 0; 
+			handRank = 0;
 		} else if (isFlush() && isStraight()) {
-			handRank = 1; 
+			handRank = 1;
 		} else if (isFourOfAKind()) {
-			handRank = 2; 
+			handRank = 2;
 		} else if (isFullHouse()) {
-			handRank = 3; 
+			handRank = 3;
 		} else if (isFlush()) {
-			handRank = 4; 
+			handRank = 4;
 		} else if (isStraight()) {
-			handRank = 5; 
+			handRank = 5;
 		} else if (isThreeOfAKind()) {
-			handRank = 6; 
+			handRank = 6;
 		} else if (isTwoPair()) {
-			handRank = 7; 
+			handRank = 7;
 		} else if (isOnePair()) {
-			handRank = 8; 
+			handRank = 8;
 		} else {
-			handRank = 9; 
+			handRank = 9;
 		}
 
 		switch (handRank) {
