@@ -77,6 +77,26 @@ public class HandComparisonTest {
     }
     
     @Test
+    void testAceLowStraightVsHigherStraight() {
+        
+        player1Hand.addCard(new Card(Suits.CLUBS, Values.FIVE));
+        player1Hand.addCard(new Card(Suits.DIAMONDS, Values.FOUR));
+        player1Hand.addCard(new Card(Suits.HEARTS, Values.THREE));
+        player1Hand.addCard(new Card(Suits.SPADES, Values.TWO));
+        player1Hand.addCard(new Card(Suits.HEARTS, Values.ACE)); // Ace-low straight
+        
+        player2Hand.addCard(new Card(Suits.HEARTS, Values.FIVE));
+        player2Hand.addCard(new Card(Suits.CLUBS, Values.SIX));
+        player2Hand.addCard(new Card(Suits.DIAMONDS, Values.SEVEN));
+        player2Hand.addCard(new Card(Suits.SPADES, Values.EIGHT));
+        player2Hand.addCard(new Card(Suits.DIAMONDS, Values.NINE)); // 5-9 straight
+        
+        int comparisonResult = player1Hand.compareTo(player2Hand);
+        System.out.println(comparisonResult);
+        assertTrue(comparisonResult < 0, "Player 2's hand wins with a higher straight");
+    }
+    
+    @Test
     void testTieWithFlushes() {
         
         player1Hand.addCard(new Card(Suits.HEARTS, Values.TEN));

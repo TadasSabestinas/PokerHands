@@ -62,15 +62,20 @@ public class PlayerHand implements Comparable<PlayerHand> {
 		}
 		return false;
 	}
+	
+	public boolean isAceLowStraight() {
+	    sortCardsByValue();
+	    return cards.get(0).getValue() == Values.TWO &&
+	           cards.get(1).getValue() == Values.THREE &&
+	           cards.get(2).getValue() == Values.FOUR &&
+	           cards.get(3).getValue() == Values.FIVE &&
+	           cards.get(4).getValue() == Values.ACE;
+	}
 
 	public boolean isStraight() {
 		sortCardsByValue(); // Make sure cards are sorted
 
-		boolean isAceLowStraight = cards.get(0).getValue() == Values.TWO && cards.get(1).getValue() == Values.THREE
-				&& cards.get(2).getValue() == Values.FOUR && cards.get(3).getValue() == Values.FIVE
-				&& cards.get(4).getValue() == Values.ACE;
-
-		if (isAceLowStraight) {
+		if (isAceLowStraight()) {
 			return true;
 		}
 
@@ -121,8 +126,7 @@ public class PlayerHand implements Comparable<PlayerHand> {
 		return -1;
 	}
 
-	private int compareKickers(PlayerHand other) { // Compare kickers of the hand if the player 1 and player 2 hands are
-													// equal
+	private int compareKickers(PlayerHand other) { // Compare kickers of the hand if the player 1 and player 2 hands are equal
 		List<Card> thisKickers = new ArrayList<>();
 
 		for (Card c : this.cards) {
@@ -173,6 +177,17 @@ public class PlayerHand implements Comparable<PlayerHand> {
 		} else if (thisRank.ordinal() < otherRank.ordinal()) {
 			return -1;
 		} else {
+			if (thisRank == HandHierarchy.STRAIGHT) { // Ensures that a non-Ace-low straight wins against an ace-low straights
+	            boolean thisAceLow = this.isAceLowStraight();
+	            boolean otherAceLow = other.isAceLowStraight();
+
+	            if (thisAceLow && !otherAceLow) {
+	                return -1; 
+	            } else if (!thisAceLow && otherAceLow) {
+	                return 1; 
+	            }
+	        }
+			
 			if (thisRank == HandHierarchy.ONE_PAIR) { // If the hands have the same rank, compare the pair values
 				int thisPairValue = findPairValue();
 				int otherPairValue = other.findPairValue();
@@ -182,8 +197,7 @@ public class PlayerHand implements Comparable<PlayerHand> {
 					return compareKickers(other); // For pairs of the same value, compare kickers
 				}
 			} else {
-				this.sortCardsByValue(); // Compare each card's value starting from highest if hands are not pairs or
-											// have no special rank
+				this.sortCardsByValue(); // Compare each card's value starting from highest if hands are not pairs or have no special rank
 				other.sortCardsByValue();
 				for (int i = 4; i >= 0; i--) {
 					int thisValue = this.cards.get(i).getValue().ordinal();
