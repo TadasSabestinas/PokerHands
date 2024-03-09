@@ -112,8 +112,7 @@ public class PlayerHand implements Comparable<PlayerHand> {
 		return -1;
 	}
 
-	private int compareKickers(PlayerHand other) { // Compare kickers of the hand if the player 1 and player 2 hands are
-													// equal
+	private int compareKickers(PlayerHand other) { // Compare kickers of the hand if the player 1 and player 2 hands are equal
 		List<Card> thisKickers = new ArrayList<>();
 
 		for (Card c : this.cards) {
@@ -164,16 +163,16 @@ public class PlayerHand implements Comparable<PlayerHand> {
 		} else if (thisRank.ordinal() < otherRank.ordinal()) {
 			return -1;
 		} else {
-			if (thisRank == HandHierarchy.ONE_PAIR) {
+			if (thisRank == HandHierarchy.ONE_PAIR) { // If the hands have the same rank, compare the pair values
 				int thisPairValue = findPairValue();
 				int otherPairValue = other.findPairValue();
 				if (thisPairValue != otherPairValue) {
 					return Integer.compare(thisPairValue, otherPairValue);
 				} else {
-					return compareKickers(other);
+					return compareKickers(other); // For pairs of the same value, compare kickers
 				}
 			} else {
-				this.sortCardsByValue();
+				this.sortCardsByValue(); // Compare each card's value starting from highest if hands are not pairs or have no special rank
 				other.sortCardsByValue();
 				for (int i = 4; i >= 0; i--) {
 					int thisValue = this.cards.get(i).getValue().ordinal();
