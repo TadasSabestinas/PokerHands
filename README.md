@@ -4,15 +4,15 @@ a Java solution for comparing poker hands, determining which player wins the han
 
 ## How the Solution Works
 
-At a high level, the solution is structured around three main classes: `Card`, `PlayerHand`, and `PlayPokerHand`.
+Looking from a high level, the solution is structured around three classes: `Card`, `PlayerHand`, and `PlayPokerHand`.
 
-- **Card Class**: Represents a single poker card, with a suit and a value (for example: "Ace of Diamonds" ).
+- **Card Class**: Represents a single poker card with a suit and a value (for example: "Ace of Diamonds" ).
 
-- **PlayerHand Class**: Represents a player's hand of cards. It includes methods for adding cards, evaluating the hand's rank (for example: pair, flush, straight), and comparing with another hand to determine the winner.
+- **PlayerHand Class**: Represents a player's hand of cards. It includes methods for adding cards, evaluating the hand's rank (for example: pair, flush, straight) and comparing with another hand to determine the winner.
 
-- **PlayPokerHand Class**: Contains the game logic, including parsing card strings from a file, creating `PlayerHand` objects, and determining the outcome of games.
+- **PlayPokerHand Class**: Contains the game logic including parsing card strings from a file, creating `PlayerHand` objects and determining the outcome of games.
 
-The comparison logic is implemented in the `PlayerHand` class, which uses the `Comparable` interface to compare two hands based on poker rules. This includes handling special cases like Ace-low straights and comparing hands with the same rank using kicker cards.
+The comparison logic is implemented in the `PlayerHand` class which uses the `Comparable` interface to compare two hands based on poker rules. This includes handling special cases like Ace-low straights and comparing hands with the same rank using kicker cards.
 
 ### What I Like About the Solution
 
