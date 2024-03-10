@@ -27,6 +27,6 @@ The comparison logic is implemented in the `PlayerHand` class, which uses the `C
 
 Throughout the development of this solution, I learned and applied several programming concepts, some of which were new to me:
 
-- **Implementing the Comparable Interface**: This was my first time using Java's `Comparable` interface in a real-world application. Learning how to define the `compareTo` method to enforce natural ordering of custom objects (in this case, poker hands) was both challenging and rewarding.
+- **Implementing the Comparable Interface**: This was my first time using Java's `Comparable` interface in a an application. Learning how to define the `compareTo` method to enforce natural ordering of custom objects (in this case, poker hands).
 
 - **Unit Testing with JUnit**: Although I was familiar with the concept of unit testing and have worked with JUnit framework writing automation tests for a university course, this project allowed me to dive deeper into writing comprehensive test cases using JUnit. Developing tests for edge cases and understanding the importance of test coverage for maintaining code quality were significant learning aspects.
