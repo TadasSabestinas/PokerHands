@@ -6,7 +6,7 @@ import java.util.Scanner;
 import PokerHands.Solution.Enums.Suits;
 import PokerHands.Solution.Enums.Values;
 
-public class PlayPokerHand {
+public class PokerMatchRunner {
 	private Card parseCard(String cardStr) { // Parses the string that represents the card into a Card object
 
 		Suits suit;
@@ -60,7 +60,7 @@ public class PlayPokerHand {
 
 	public void playGame() {
 
-		String filename = "src\\main\\java\\PokerHands\\Solution\\data\\poker.txt";
+		String filename = "src\\main\\resources\\data\\poker.txt";
 
 		try {
 			Scanner scanner = new Scanner(new File(filename));

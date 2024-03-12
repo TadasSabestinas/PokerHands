@@ -19,6 +19,7 @@ public class PlayerHand implements Comparable<PlayerHand> {
 	public void addCard(Card card) {
 		if (cards.size() < 5) {
 			cards.add(card);
+			sortCardsByValue();
 		} else {
 			System.out.println("A hand can only contain 5 cards.");
 		}

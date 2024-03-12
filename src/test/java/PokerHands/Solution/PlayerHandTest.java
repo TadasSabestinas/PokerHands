@@ -21,8 +21,8 @@ public class PlayerHandTest {
 	@Test
 	void testOnePair() {
 		hand.addCard(new Card(Suits.HEARTS, Values.TWO));
-		hand.addCard(new Card(Suits.DIAMONDS, Values.TWO));
 		hand.addCard(new Card(Suits.CLUBS, Values.THREE));
+		hand.addCard(new Card(Suits.DIAMONDS, Values.TWO));
 		hand.addCard(new Card(Suits.SPADES, Values.FOUR));
 		hand.addCard(new Card(Suits.HEARTS, Values.FIVE));
 		assertTrue(hand.isOnePair(), "Hand is a pair");
