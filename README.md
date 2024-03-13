@@ -4,7 +4,7 @@ a Java solution for comparing poker hands, determining which player wins the han
 
 ## How the Solution Works
 
-Looking from a high level, the solution is structured around three classes: `Card`, `PlayerHand`, and `PlayPokerHand`.
+Looking from a high level, the solution is structured around three classes: `Card`, `PlayerHand`, and `PokerMatchRunner`.
 
 - **Card Class**: Represents a single poker card with a suit and a value (for example: "Ace of Diamonds" ).
 
